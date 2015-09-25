@@ -27,7 +27,7 @@
 
     <div class="field">
       <%= f.label :role %><br />
-      <%= f.select :role, options_for_select(%w[Admin Member]) %>
+      <%= f.text_field :role %>
     </div>
 
     <div class="field">
@@ -35,7 +35,7 @@
       <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :encrypted_password, autocomplete: "off" %>
+      <%= f.password_field :encrypted_password %>
     </div>
 
 
