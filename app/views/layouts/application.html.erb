@@ -46,11 +46,13 @@
 		      <ul class="nav navbar-nav navbar-right">
 		        <!-- <li  class="active"><a href="#">Link</a></li> -->
 		        <li>
-		        	<%= link_to(
-		        		(current_user ? 'Sign Out' : 'Sign In'), 
-		        		(current_user ?  destroy_user_session_path : new_user_session_path), 
-		        		method: (current_user ? :delete : :get)
-		        		) %>
+		        	<%= 
+		        	#link_to(
+		        	#	(current_user ? 'Sign Out' : 'Sign In'), 
+		        	#	(current_user ?  destroy_user_session_path : new_user_session_path), 
+		        	#	method: (current_user ? :delete : :get)
+		        		#) 
+		        		%>
 		        </li>
 
 		        <% if current_user %>
@@ -59,7 +61,9 @@
 			        </li>
 		        <% else %>
 		        	<li>
-			        	<%= link_to( 'Sign up', new_user_registration_path ) %>
+			        	<%= 
+			        		#link_to( 'Sign up', new_user_registration_path ) 
+			        		%>
 			        </li>
 		        <% end %>
 		        	
