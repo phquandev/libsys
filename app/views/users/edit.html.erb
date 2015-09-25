@@ -16,28 +16,16 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name %>
     </div>
 
     <div class="field">
       <%= f.label :role %><br />
-      <%= f.text_field :role %>
+      <%= f.select :role, [0, 1] %>      
     </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :encrypted_password, autocomplete: "off" %>
-    </div>
-
+    <br/>
 
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to 'Cancel', users_path, :class => 'btn btn-default' %>

@@ -19,9 +19,10 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.name %></td>
-        <td><%= user.role == "0" ? "Admin" : "Member" %></td>
+        <td><%= user.role == 0 ? "Admin" : "Member" %></td>
         <td><%= user.created_at %></td>
         <td>
+          <%= link_to 'Show', user_path(user), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_user_path(user), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
