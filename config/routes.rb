@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users
+  resources :books
   devise_for :user, controllers: {
                        sessions: 'users/sessions',
                        registrations: 'users/registrations'
