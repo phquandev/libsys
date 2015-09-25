@@ -37,7 +37,7 @@
 
     <div class="field">
       <%= f.label :status %><br />
-      <%= f.text_field :status %>
+      <%= f.select :status, options_for_select([["Available", 0], ["Checked Out", 1]]) %>
     </div>
 
     <%= f.submit 'Update', :class => 'btn btn-primary' %>

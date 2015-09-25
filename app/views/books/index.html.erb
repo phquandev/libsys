@@ -23,7 +23,7 @@
         <td><%= book.title %></td>
         <td><%= book.description %></td>
         <td><%= book.authors %></td>
-        <td><%= book.status == 0 ? "Checked Out" : "Available" %></td>
+        <td><%= book.status == 0 ? "Available" : "Checked Out" %></td>
         <td><%= book.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

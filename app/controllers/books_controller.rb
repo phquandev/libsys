@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
+
   def index
     @books = Book.all
   end
 
+  # Create new book
   def new
     @book = Book.new
   end
@@ -14,6 +16,7 @@ class BooksController < ApplicationController
     end
   end
 
+  # Update book's attributes
   def edit
     @book = Book.find(params[:id])
   end
@@ -24,6 +27,7 @@ class BooksController < ApplicationController
     end
   end
 
+  # Delete book
   def destroy
     @book = Book.find(params[:id]).destroy
     redirect_to books_path
@@ -31,10 +35,6 @@ class BooksController < ApplicationController
 
   private
   # Set book's variable
-  def set_bookid
-    @user = Book.find(params[:id])
-  end
-
   def book_params
     params.require(:book).permit(:isbn, :title, :description, :authors, :status)
   end
