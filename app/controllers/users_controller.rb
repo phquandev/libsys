@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
-  before_filter :set_user, only: [:edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :set_user, only: [:edit, :update, :destroy, :show]
+
   def index
-    @users = User.all
+    redirect_to root_path unless current_user.role == 0
+
+    if params[:role]
+      @users = User.where(role: params[:role])
+    else
+      @users = User.all
+    end
+    
+  end
+
+  def show
   end
 
   # Create new users
@@ -10,6 +22,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    redirect_to root_path unless current_user.role != 0
+
     @user = User.new(user_params)
     if @user.save
       redirect_to users_path
@@ -42,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :encrypted_password, :role)
+    params.require(:user).permit(:name, :email, :encrypted_password, :password, :password_confirmation, :role)
   end
 end

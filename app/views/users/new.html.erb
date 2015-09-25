@@ -27,18 +27,24 @@
 
     <div class="field">
       <%= f.label :role %><br />
-      <%= f.text_field :role %>
+      <%= f.select :role, [0, 1] %>          
     </div>
 
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :encrypted_password %>
+      <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
 
+    <br/>
+    
     <%= f.submit 'Create New', :class => 'btn btn-primary' %>
     <%= link_to 'Cancel', users_path, :class => 'btn btn-default' %>
 
