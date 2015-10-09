@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    if params[:search]
+      @books = Book.search(params[:search])
+    else
+      @books = Book.all
+    end
   end
 
   # Create new book
@@ -14,6 +18,11 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path
     end
+  end
+
+  # View book's profiles
+  def show
+    @book = Book.find(params[:id])
   end
 
   # Update book's attributes

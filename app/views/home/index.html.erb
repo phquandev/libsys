@@ -1,1 +1,24 @@
-WELCOME
+<div class="col-md-8">
+  <%= form_tag books_path, :method => 'get' do %>
+      <div class="col-md-5">
+        <%= text_field_tag :search, params[:search], :placeholder => "Insert to search...", :class => "form-control" %>
+      </div>
+      <div class="col-md-3 pull-left">
+        <%= submit_tag "Search", :class => "btn btn-primary" %>
+      </div>
+  <% end %>
+</div>
+
+<div class="col-md-12" style="margin-top: 50px;">
+  <% @books.each do |book| %>
+      <article class="col-md-4">
+        <p>ISBN:        <%= book.isbn %></p>
+        <p>Title:       <%= book.title %></p>
+        <p>Authors:     <%= book.authors %></p>
+        <p>Description: <%= book.description %></p>
+        <p>Status:      <%= book.status == 0 ? "Available" : "Checked Out" %></p>
+        <%= link_to "View Detail",
+                    { controller: "books", action: "show", id: book.id } %>
+      </article>
+  <% end %>
+</div>

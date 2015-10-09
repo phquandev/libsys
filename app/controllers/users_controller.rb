@@ -13,9 +13,6 @@ class UsersController < ApplicationController
     
   end
 
-  def show
-  end
-
   # Create new users
   def new
     @user = User.new
@@ -24,11 +21,9 @@ class UsersController < ApplicationController
   def create
     redirect_to root_path unless current_user.role != 0
 
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
-      redirect_to users_path
-    else
-      render 'new'
+      redirect_to root_path
     end
   end
 
