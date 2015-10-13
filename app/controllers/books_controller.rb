@@ -53,7 +53,7 @@ class BooksController < ApplicationController
 
   # Avaiable the book
   def avaiable_book
-    
+
   end
 
   # # Review book's checked out

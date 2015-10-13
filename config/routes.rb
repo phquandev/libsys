@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :books do
   collection do
-    get '/:id/check_out', :action => :check_out
-    get 'checkout_review', :action => :check_out_review
+    get '/:id/check_out',     :action => :check_out
+    get '/:id/avaiable_book', :action => :available_book
   end
 end
 
