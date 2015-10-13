@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     if params[:search]
       @books = Book.search(params[:search])
@@ -41,6 +41,25 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id]).destroy
     redirect_to books_path
   end
+
+  # Checkout the book
+  def check_out
+    @book = Book.find_by(params[:id])
+    @checkout_history = @book.checkout_histories.create(book_id: @book.id, user_id: current_user.id)
+    if @checkout_history.save
+      redirect_to root_path
+    end
+  end
+
+  # Avaiable the book
+  def avaiable_book
+    
+  end
+
+  # # Review book's checked out
+  # def check_out_review
+  #   @user = CheckoutHistory.where(user_id: current_user.id)
+  # end
 
   private
   # Set book's variable

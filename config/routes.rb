@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users
-  resources :books
+  resources :books do
+  collection do
+    get '/:id/check_out', :action => :check_out
+    get 'checkout_review', :action => :check_out_review
+  end
+end
+
+  resources :checkout_histories
   devise_for :user, controllers: {
-                       sessions: 'users/sessions',
+                       sessions:      'users/sessions',
                        registrations: 'users/registrations'
                    }
 

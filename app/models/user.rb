@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   def default_values
     self.role ||= 1
   end
+
+  has_many :checkout_histories
 end

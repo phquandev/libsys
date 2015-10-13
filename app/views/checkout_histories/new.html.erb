@@ -1,0 +1,5 @@
+<%= form_for @checkout_history do |f| %>
+    Book name: <%= f.label :name, @book.name %><br>
+    Authors: <%= f.label :authors, @book.authors %><br>
+    <%= f.submit 'Check out' %>
+<% end %>

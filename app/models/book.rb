@@ -7,4 +7,6 @@ class Book < ActiveRecord::Base
       Book.all
     end
   end
+
+  has_many :checkout_histories
 end

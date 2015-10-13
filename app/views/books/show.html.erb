@@ -1,9 +1,13 @@
 <div class="row" style="margin: 15px;">
-  <h4>ISBN: <b><%= @book.isbn %></b></h4>
-  <h4>Title: <b><%= @book.title %></b></h4>
-  <h4>Description: <b><%= @book.description %></b></h4>
-  <h4>Author: <b><%= @book.authors %></b></h4>
-  <h4>Status: <b><%= @book.status == 0 ? "Available" : "Checked Out" %></b></h4>
-  <br/>
-  <%= link_to 'Back', root_path, class: 'btn btn-default' %>
+  <%= form_for @book do |f| %>
+      <h4>ISBN: <b><%= f.label @book.isbn %></b></h4>
+      <h4>Title: <b><%= f.label @book.title %></b></h4>
+      <h4>Description: <b><%= f.label @book.description %></b></h4>
+      <h4>Author: <b><%= f.label @book.authors %></b></h4>
+      <h4>Status: <b><%= f.label @book.status == 0 ? "Available" : "Checked Out" %></b></h4>
+      <%= f.label :user_id, current_user.id, class: 'form-hidden' %>
+      <%= link_to 'Back', root_path, class: 'btn btn-default' %>
+      <%= link_to "Checkout this book",
+                  { controller: "books", action: "check_out", id: @book.id }, { class: "btn btn-primary" } %>
+  <% end %>
 </div>
